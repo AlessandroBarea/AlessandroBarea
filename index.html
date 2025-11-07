@@ -5,76 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Homepage</title>
   <style>
-    :root{
-      --ink:#111;
-      --border:#2b2b2b;
-      --dot:#d6d6d6;
-      --card:#fff;
+    :root {
+      --ink: #111;
+      --border: #2b2b2b;
+      --card: #ffffffcc; /* bianco semitrasparente */
+      --accent: #2196f3;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
 
-    /* sfondo puntinato */
-    body{
-      min-height:100vh;
-      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-      color:var(--ink);
-      background:
-        radial-gradient(var(--dot) 1px, transparent 1px) 0 0/14px 14px,
-        #fafafa;
-      display:grid;
-      place-items:center;
-      padding:18px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background-image: url("https://images.unsplash.com/photo-1549893075-71f11af6b79c?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* overlay scuro per migliorare contrasto */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
     }
 
     /* cornice esterna */
-    .frame{
-      width:min(1200px, 96vw);
-      min-height:70vh;
-      border:2px solid var(--border);
-      border-radius:8px;
-      padding:28px clamp(16px, 4vw, 48px) 40px;
-      background:transparent;
+    .frame {
+      position: relative;
+      z-index: 1;
+      width: min(1200px, 96vw);
+      min-height: 70vh;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 28px clamp(16px, 4vw, 48px) 40px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(6px); /* effetto vetro */
     }
 
-    h1{
-      text-align:center;
-      font-weight:700;
-      font-size:clamp(26px, 4vw, 40px);
-      margin-bottom:28px;
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      font-size: clamp(26px, 4vw, 40px);
+      margin-bottom: 28px;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
     }
 
-    /* griglia a 2 colonne “lontane” */
-    .row{
-      display:grid;
+    /* griglia a 2 colonne */
+    .row {
+      display: grid;
       grid-template-columns: 1fr 1fr;
-      column-gap:clamp(40px, 18vw, 260px);  /* distanza grande tra le card */
-      align-items:start;
-      justify-items:center;
-      margin-top:20px;
+      column-gap: clamp(40px, 18vw, 260px);
+      align-items: start;
+      justify-items: center;
+      margin-top: 20px;
     }
 
-    .card{
+    .card {
       width: clamp(220px, 26vw, 320px);
       aspect-ratio: 3/4;
       background: var(--card);
       border: 2px solid var(--border);
       border-radius: 6px;
-      display:grid;
-      place-items:center;
-      font-weight:800;
-      text-decoration:none;
-      color:inherit;
-      transition:transform .15s ease, box-shadow .15s ease;
-    }
-    .card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 10px 20px rgba(0,0,0,.08);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--ink);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s;
     }
 
-    /* responsive: sotto 780px vanno in colonna */
-    @media (max-width: 780px){
-      .row{ grid-template-columns: 1fr; row-gap:28px; }
-      .card{ width:min(360px, 76vw); }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+    }
+
+    /* responsive */
+    @media (max-width: 780px) {
+      .row {
+        grid-template-columns: 1fr;
+        row-gap: 28px;
+      }
+      .card {
+        width: min(360px, 76vw);
+      }
     }
   </style>
 </head>
@@ -83,9 +111,8 @@
     <h1 id="titolo">Homepage</h1>
 
     <section class="row" aria-label="Navigazione pagine">
-      <!-- Cambia gli href con i file reali -->
-      <a class="card" href="pagina1.html">Pagina 1</a>
-      <a class="card" href="pagina2.html">Pagina 2</a>
+      <a class="card" href="pagina_1.html">Pagina 1</a>
+      <a class="card" href="pagina_2.html">Pagina 2</a>
     </section>
   </main>
 </body>
