@@ -133,5 +133,51 @@
     </section>
   </div>
 
+  <script>
+document.querySelectorAll(".item img").forEach(img => {
+  img.addEventListener("click", () => {
+    // Clona l'immagine cliccata
+    const clone = img.cloneNode();
+    clone.classList.add("zoomed");
+    document.body.appendChild(clone);
+
+    // Calcola posizione iniziale (per effetto più fluido)
+    const rect = img.getBoundingClientRect();
+    clone.style.position = "fixed";
+    clone.style.left = rect.left + "px";
+    clone.style.top = rect.top + "px";
+    clone.style.width = rect.width + "px";
+    clone.style.height = rect.height + "px";
+    clone.style.borderRadius = "8px";
+    clone.style.transition = "all 0.8s ease";
+    clone.style.zIndex = "9999";
+    clone.style.cursor = "pointer";
+
+    // Forza il repaint
+    void clone.offsetWidth;
+
+    // Effetto zoom al centro
+    clone.style.left = "50%";
+    clone.style.top = "50%";
+    clone.style.transform = "translate(-50%, -50%) scale(2)";
+    clone.style.width = "auto";
+    clone.style.height = "70vh";
+    clone.style.borderRadius = "10px";
+    clone.style.boxShadow = "0 0 30px rgba(0,0,0,0.6)";
+
+    // Dopo 2 secondi torna indietro
+    setTimeout(() => {
+      clone.style.transform = "translate(0, 0) scale(1)";
+      clone.style.left = rect.left + "px";
+      clone.style.top = rect.top + "px";
+      clone.style.width = rect.width + "px";
+      clone.style.height = rect.height + "px";
+      clone.style.boxShadow = "0 0 0 rgba(0,0,0,0)";
+      setTimeout(() => clone.remove(), 800); // dopo il ritorno rimuove il clone
+    }, 2000);
+  });
+});
+</script>
+
 </body>
 </html>
