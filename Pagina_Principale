@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pagina Principale</title>
+  <style>
+    :root{
+      --bg: #fafafa;
+      --ink: #111;
+      --border: #333;
+      --card: #fff;
+    }
+
+    /* Sfondo puntinato tipo carta millimetrata */
+    body{
+      margin:0;
+      min-height:100dvh;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(#d9d9d9 1px, transparent 1px) 0 0/14px 14px,
+        var(--bg);
+      display:grid;
+      place-items:center;
+    }
+
+    .frame{
+      width:min(1200px, 94vw);
+      min-height:70vh;
+      border:3px solid var(--border);
+      border-radius:10px;
+      padding:32px clamp(16px, 4vw, 48px) 48px;
+      background:rgba(255,255,255,0.35);
+      box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    }
+
+    h1{
+      margin:0 0 28px;
+      text-align:center;
+      font-weight:700;
+      font-size: clamp(28px, 4.2vw, 48px);
+      letter-spacing:.5px;
+    }
+
+    .cards{
+      margin-inline:auto;
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(18px, 3vw, 42px);
+      max-width: 980px;
+    }
+
+    .card{
+      aspect-ratio: 3/4;
+      background:var(--card);
+      border:3px solid var(--border);
+      border-radius:6px;
+      display:grid;
+      place-items:center;
+      text-decoration:none;
+      color:inherit;
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight:800;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .card:hover, .card:focus-visible{
+      transform: translateY(-4px);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+      outline: none;
+    }
+
+    @media (max-width: 760px){
+      .cards{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px){
+      .cards{ grid-template-columns: 1fr; }
+      .frame{ padding: 24px 16px 36px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="frame" role="main" aria-labelledby="titolo">
+    <h1 id="titolo">Pagina Principale</h1>
+
+    <section class="cards" aria-label="Seleziona una pagina">
+      <!-- Sostituisci # con i link reali delle tue pagine -->
+      <a class="card" href="#pagina1" aria-label="Vai a Pagina 1">Pagina 1</a>
+      <a class="card" href="#pagina2" aria-label="Vai a Pagina 2">Pagina 2</a>
+      <a class="card" href="#pagina3" aria-label="Vai a Pagina 3">Pagina 3</a>
+    </section>
+  </main>
+</body>
+</html>

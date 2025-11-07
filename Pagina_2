@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pagina 2</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="frame">
+    <div class="badge">Pagina 2</div>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="pagina1.html">Pag. 1</a>
+      <a href="pagina3.html">Pag. 3</a>
+    </nav>
+
+    <section class="list" aria-label="Contenuti Pagina 2">
+      <article class="item">
+        <img class="thumb" src="percorso/immagine1.jpg" alt="Descrizione immagine 1">
+        <h2 class="title">Titolo</h2>
+      </article>
+
+      <article class="item">
+        <img class="thumb" src="percorso/immagine1.jpg" alt="Descrizione immagine 1">
+        <h2 class="title">Titolo</h2>
+      </article>
+
+      <article class="item">
+        <img class="thumb" src="percorso/immagine1.jpg" alt="Descrizione immagine 1">
+        <h2 class="title">Titolo</h2>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
