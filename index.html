@@ -22,86 +22,88 @@
       min-height: 100vh;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
       color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+
+      /* immagine di sfondo */
       background-image: url("https://images.unsplash.com/photo-1549893075-71f11af6b79c?auto=format&fit=crop&w=1600&q=80");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      display: grid;
-      place-items: center;
-      padding: 18px;
-      position: relative;
-      overflow-x: hidden;
+      background-attachment: fixed; /* per stabilizzarla */
     }
 
-    /* overlay scuro per migliorare contrasto */
+    /* overlay scuro */
     body::before {
       content: "";
-      position: absolute;
+      position: fixed;
       inset: 0;
       background: rgba(0, 0, 0, 0.3);
       z-index: 0;
     }
 
-    /* cornice esterna */
+    /* cornice principale */
     .frame {
       position: relative;
       z-index: 1;
       width: min(1200px, 96vw);
       min-height: 70vh;
-      border: 2px solid var(--border);
+      border: 3px solid white; /* bordo bianco visibile */
       border-radius: 8px;
-      padding: 28px clamp(16px, 4vw, 48px) 40px;
+      padding: 40px clamp(16px, 4vw, 48px);
       background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(6px); /* effetto vetro */
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
     }
 
     h1 {
       text-align: center;
       font-weight: 700;
-      font-size: clamp(26px, 4vw, 40px);
-      margin-bottom: 28px;
+      font-size: clamp(28px, 4vw, 42px);
       color: #fff;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      margin-bottom: 40px;
     }
 
-    /* griglia a 2 colonne */
+    /* griglia due colonne */
     .row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      column-gap: clamp(40px, 18vw, 260px);
-      align-items: start;
+      column-gap: clamp(40px, 20vw, 260px);
       justify-items: center;
-      margin-top: 20px;
+      margin-top: 30px;
     }
 
     .card {
-      width: clamp(220px, 26vw, 320px);
+      width: clamp(240px, 28vw, 340px);
       aspect-ratio: 3/4;
       background: var(--card);
       border: 2px solid var(--border);
-      border-radius: 6px;
+      border-radius: 8px;
       display: grid;
       place-items: center;
-      font-weight: 800;
+      font-weight: 700;
+      font-size: 1.3rem;
       text-decoration: none;
       color: var(--ink);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
     }
 
     .card:hover {
       border-color: var(--accent);
       transform: translateY(-6px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
     }
 
-    /* responsive */
     @media (max-width: 780px) {
       .row {
         grid-template-columns: 1fr;
         row-gap: 28px;
       }
       .card {
-        width: min(360px, 76vw);
+        width: min(360px, 80vw);
       }
     }
   </style>
@@ -111,8 +113,8 @@
     <h1 id="titolo">Homepage</h1>
 
     <section class="row" aria-label="Navigazione pagine">
-      <a class="card" href="pagina_1.html">Pagina 1</a>
-      <a class="card" href="pagina_2.html">Pagina 2</a>
+      <a class="card" href="pagina1.html">Pagina 1</a>
+      <a class="card" href="pagina2.html">Pagina 2</a>
     </section>
   </main>
 </body>
